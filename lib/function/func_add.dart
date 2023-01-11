@@ -5,7 +5,7 @@ import 'dart:developer';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'func_isLoading.dart';
 
-addData(context, jdl, description, pathImg) async {
+addData(context, jdl, description, tgl, pathImg) async {
   //handle data kosong
   if (jdl == null || description == null || pathImg == null) {
     handle("Semua data harus diisi!");

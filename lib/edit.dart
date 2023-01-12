@@ -6,6 +6,9 @@ import 'function/func_read.dart';
 import 'package:uas_kelompok3/function/func_getImage.dart';
 import 'function/func_edit.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'dart:developer';
 
 class Edit extends StatefulWidget {
   const Edit({super.key});
@@ -15,20 +18,15 @@ class Edit extends StatefulWidget {
 }
 
 class _EditState extends State<Edit> {
-  String? judul;
-  String? deskripsi;
   String? gambar;
-  String? tglAwal;
-  String? tglAkhir;
 
   DateTime? dateTimenow = DateTime.now(), dateTimeTommorow, picked_date;
   DateTime? dateTimenow2 = DateTime.now(), dateTimeTommorow2, picked_date2;
   var year, month, day;
   var year2, month2, day2;
 
-  TextEditingController ctl_judul = TextEditingController();
-  TextEditingController ctl_deskrpsi = TextEditingController();
-
+  TextEditingController ctl_tgl = TextEditingController();
+  TextEditingController ctl_tglAkhir = TextEditingController();
 //Tanggal
   Future<Null> getDate(BuildContext context) async {
     picked_date = await showDatePicker(
@@ -38,9 +36,7 @@ class _EditState extends State<Edit> {
         lastDate: DateTime(dateTimenow!.year + 1));
 
     if (picked_date != null && picked_date != dateTimenow) {
-      setState(() {
-        dateTimenow = picked_date;
-      });
+      ctl_tgl.text = picked_date.toString().substring(0, 10);
     }
   }
 
@@ -50,8 +46,6 @@ class _EditState extends State<Edit> {
     year = dateTimeTommorow!.year;
     month = dateTimeTommorow!.month;
     day = dateTimeTommorow!.day;
-
-    var data5 = DateTime.now().add(Duration(days: -1));
 
     log("year" + year.toString());
     log("month" + month.toString());
@@ -67,9 +61,7 @@ class _EditState extends State<Edit> {
         lastDate: DateTime(dateTimenow2!.year + 1));
 
     if (picked_date2 != null && picked_date2 != dateTimenow2) {
-      setState(() {
-        dateTimenow2 = picked_date2;
-      });
+      ctl_tglAkhir.text = picked_date2.toString().substring(0, 10);
     }
   }
 
@@ -79,8 +71,6 @@ class _EditState extends State<Edit> {
     year2 = dateTimeTommorow2!.year;
     month2 = dateTimeTommorow2!.month;
     day2 = dateTimeTommorow2!.day;
-
-    var data6 = DateTime.now().add(Duration(days: -1));
 
     log("year" + year2.toString());
     log("month" + month2.toString());
@@ -106,10 +96,8 @@ class _EditState extends State<Edit> {
     TextEditingController ctl_deskrpsi =
         TextEditingController(text: detailEdit.desc);
     TextEditingController ctl_gambar = TextEditingController();
-    TextEditingController ctl_tgl =
-        TextEditingController(text: detailEdit.tglAwal);
-    TextEditingController ctl_tglAkhir =
-        TextEditingController(text: detailEdit.tglAkhir);
+    ctl_tgl.text = detailEdit.tglAwal;
+    ctl_tglAkhir.text = detailEdit.tglAkhir;
 
     if (file != null) {
       gambar = nameFile;
@@ -201,11 +189,7 @@ class _EditState extends State<Edit> {
                       height: 50,
                       child: Expanded(
                           child: MaterialButton(
-                        onPressed: () {
-                          setState(() {
-                            getDate(context);
-                          });
-                        },
+                        onPressed: () => getDate(context),
                         child: Text("Choose"),
                         color: Colors.deepPurple,
                         textColor: Colors.white,
@@ -232,11 +216,7 @@ class _EditState extends State<Edit> {
                       height: 50,
                       child: Expanded(
                           child: MaterialButton(
-                        onPressed: () {
-                          setState(() {
-                            getDate2(context);
-                          });
-                        },
+                        onPressed: () => getDate2(context),
                         child: Text("Choose"),
                         color: Colors.deepPurple,
                         textColor: Colors.white,
@@ -254,8 +234,14 @@ class _EditState extends State<Edit> {
                     color: Colors.green,
                     textColor: Colors.white,
                     onPressed: () {
-                      editData(context, detailEdit.id, ctl_judul.text,
-                          ctl_deskrpsi.text, file, ctl_tgl, ctl_tglAkhir);
+                      editData(
+                          context,
+                          detailEdit.id,
+                          ctl_judul.text,
+                          ctl_deskrpsi.text,
+                          file,
+                          ctl_tgl.text,
+                          ctl_tglAkhir.text);
                     },
                     child: Text("Simpan"),
                   ),

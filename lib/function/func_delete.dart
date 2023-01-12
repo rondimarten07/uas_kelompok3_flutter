@@ -28,11 +28,11 @@ deleteImage(context, idData) async {
   //loading lalu pushnamed ke fungsi read
   isLoading(context);
   FormData sendData = FormData.fromMap({
-    "idnews": idData.toString(),
+    "id": idData.toString(),
   });
 
   final response = await Dio()
-      .post("https://tifrp20a.my.id/13/deletenews.php", data: sendData);
+      .post("https://tifrp20a.my.id/6/delete.php", data: sendData);
   log("test sen data :" + idData.toString());
   return Navigator.of(context)
       .pushNamedAndRemoveUntil('/read', (Route<dynamic> route) => false);

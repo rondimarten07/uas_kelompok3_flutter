@@ -3,12 +3,14 @@ import 'package:dio/dio.dart';
 import 'dart:developer';
 
 class ListCloud {
-  String id, title, desc, img;
+  String id, title, desc, img, tglAwal, tglAkhir;
   ListCloud(
       {required this.id,
       required this.title,
       required this.desc,
-      required this.img});
+      required this.img,
+      required this.tglAwal,
+      required this.tglAkhir});
 }
 
 Future<List<ListCloud>> read(query) async {
@@ -32,7 +34,9 @@ Future<List<ListCloud>> read(query) async {
           id: item["id"]!,
           title: item["title"]!,
           desc: item["desc"]!,
-          img: item["img"]!);
+          img: item["img"]!,
+          tglAwal: item["first_date"]!,
+          tglAkhir: item["last_date"]!);
       dataList.add(tmpData);
     });
     return dataList;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:developer';
 import 'package:image_picker/image_picker.dart';
 import 'function/func_getImage.dart';
 import 'function/func_add.dart';
@@ -16,15 +15,17 @@ class AddData extends StatefulWidget {
 
 class _AddDataState extends State<AddData> {
   DateTime? dateTimenow = DateTime.now(), dateTimeTommorow, picked_date;
+  DateTime? dateTimenow2 = DateTime.now(), dateTimeTommorow2, picked_date2;
   var year, month, day;
+  var year2, month2, day2;
 
   String? judul;
   String? deskripsi;
 
   TextEditingController ctl_judul = TextEditingController();
   TextEditingController ctl_deskrpsi = TextEditingController();
-  TextEditingController ctl_tgl = TextEditingController();
 
+//Tanggal
   Future<Null> getDate(BuildContext context) async {
     picked_date = await showDatePicker(
         context: context,
@@ -52,6 +53,35 @@ class _AddDataState extends State<AddData> {
     log("month" + month.toString());
     log("day" + day.toString());
   }
+  //Akhir tanggal
+
+  Future<Null> getDate2(BuildContext context) async {
+    picked_date2 = await showDatePicker(
+        context: context,
+        initialDate: dateTimenow2!,
+        firstDate: DateTime(dateTimenow2!.year - 1),
+        lastDate: DateTime(dateTimenow2!.year + 1));
+
+    if (picked_date2 != null && picked_date2 != dateTimenow2) {
+      setState(() {
+        dateTimenow2 = picked_date2;
+      });
+    }
+  }
+
+  void dateTime_method2() {
+    dateTimenow2 = new DateTime.now();
+    dateTimeTommorow2 = dateTimenow2!.add(const Duration(days: 1));
+    year2 = dateTimeTommorow2!.year;
+    month2 = dateTimeTommorow2!.month;
+    day2 = dateTimeTommorow2!.day;
+
+    var data6 = DateTime.now().add(Duration(days: -1));
+
+    log("year" + year2.toString());
+    log("month" + month2.toString());
+    log("day" + day2.toString());
+  }
 
   @override
   void initState() {
@@ -65,7 +95,9 @@ class _AddDataState extends State<AddData> {
   @override
   Widget build(BuildContext context) {
     String date = dateTimenow.toString().substring(0, 10);
+    String date2 = dateTimenow2.toString().substring(0, 10);
     TextEditingController ctl_tgl = TextEditingController(text: date);
+    TextEditingController ctl_tgl_akhir = TextEditingController(text: date2);
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -141,7 +173,7 @@ class _AddDataState extends State<AddData> {
                       controller: ctl_tgl,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: 'Isi tgl',
+                        labelText: 'Isi tgl awal',
                         hintText: "yyyy-dd-mm",
                       ),
                     ),
@@ -164,6 +196,37 @@ class _AddDataState extends State<AddData> {
               ),
             ),
             Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: TextField(
+                      controller: ctl_tgl_akhir,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Isi tgl akhir',
+                        hintText: "yyyy-dd-mm",
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                    child: Expanded(
+                        child: MaterialButton(
+                      onPressed: () {
+                        setState(() {
+                          getDate2(context);
+                        });
+                      },
+                      child: Text("Choose"),
+                      color: Colors.deepPurple,
+                      textColor: Colors.white,
+                    )),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.all(10.0),
               child: SizedBox(
                 width: double.infinity,
@@ -173,8 +236,8 @@ class _AddDataState extends State<AddData> {
                   textColor: Colors.white,
                   onPressed: () {
                     CircularProgressIndicator();
-                    addData(context, ctl_judul.text, ctl_deskrpsi.text,
-                        ctl_tgl.text, file);
+                    addData(context, ctl_judul.text, ctl_deskrpsi.text, file,
+                        ctl_tgl.text, ctl_tgl_akhir.text);
                   },
                   child: const Text("Simpan"),
                 ),

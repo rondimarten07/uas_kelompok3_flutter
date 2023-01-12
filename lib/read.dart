@@ -20,13 +20,12 @@ class _ReadState extends State<Read> {
 
   @override
   void initState() {
-   //inisialisasi awal disini
+    //inisialisasi awal disini
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-  
     TextEditingController searchingController = TextEditingController();
 
     return WillPopScope(
@@ -69,8 +68,7 @@ class _ReadState extends State<Read> {
                         setState(() {
                           qsearch = searchingController.text;
                         });
-                      } 
-                          );
+                      });
                     },
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
@@ -99,6 +97,8 @@ class _ReadState extends State<Read> {
                                       backgroundImage: NetworkImage(item.img)),
                                   title: Text(item.title),
                                   subtitle: Text(item.desc),
+                                  trailing: Text(
+                                      item.tglAwal + " - " + item.tglAkhir),
                                 ),
                                 padding: const EdgeInsets.only(
                                     top: 3, left: 2, right: 2, bottom: 3),
@@ -111,11 +111,13 @@ class _ReadState extends State<Read> {
                                           id: item.id,
                                           title: item.title,
                                           desc: item.desc,
-                                          img: item.img)
+                                          img: item.img,
+                                          tglAwal: item.tglAwal,
+                                          tglAkhir: item.tglAkhir)
                                     });
-                                  setState(() {
-                                    qsearch="";
-                                  });
+                                setState(() {
+                                  qsearch = "";
+                                });
                               },
                             );
                             tempChildren.add(child);

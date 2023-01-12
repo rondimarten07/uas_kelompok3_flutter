@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'dart:developer';
 import 'func_isLoading.dart';
 
-editData(context, id, jdl, description, pathImg) async {
+editData(context, id, jdl, description, pathImg, tglAwal, tglAkhir) async {
   //loading lalu pushnamed ke fungsi read
   isLoading(context);
   String? imgName;
@@ -17,13 +17,15 @@ editData(context, id, jdl, description, pathImg) async {
   }
 
   FormData SendData = FormData.fromMap({
-    "idnews": id.toString(),
+    "id": id.toString(),
     "judul": jdl.toString(),
     "deskripsi": description.toString(),
     "url_image": dataImg,
+    "tanggal_awal": tglAwal.toString(),
+    "tanggal_akhir": tglAkhir.toString()
   });
-  final response = await Dio()
-      .post("https://tifrp20a.my.id/13/editnews.php", data: SendData);
+  final response =
+      await Dio().post("https://tifrp20a.my.id/6/edit.php", data: SendData);
   log("test send data :" + jdl.toString());
   return Navigator.of(context)
       .pushNamedAndRemoveUntil('/read', (Route<dynamic> route) => false);

@@ -24,8 +24,10 @@ editData(context, id, jdl, description, pathImg, tglAwal, tglAkhir) async {
     "tanggal_awal": tglAwal.toString(),
     "tanggal_akhir": tglAkhir.toString()
   });
+
   final response =
       await Dio().post("https://tifrp20a.my.id/6/edit.php", data: SendData);
+
   log("test send data :" + jdl.toString());
   return Navigator.of(context)
       .pushNamedAndRemoveUntil('/read', (Route<dynamic> route) => false);

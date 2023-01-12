@@ -29,8 +29,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: 
-      Center(
+      body: Center(
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -50,6 +49,8 @@ class _LoginState extends State<Login> {
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Username',
+                    hintText: 'Input Username Anda',
+                    prefixIcon: Icon(Icons.person),
                   ),
                 ),
               ),
@@ -61,39 +62,53 @@ class _LoginState extends State<Login> {
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Password',
+                    hintText: 'Input Password Anda',
+                    prefixIcon: Icon(Icons.lock),
                   ),
                 ),
               ),
-              Builder(
-                builder: (context) => Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
-                    TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Register()));
-                        },
-                        child: const Text('Sign up',
-                            style: TextStyle(fontWeight: FontWeight.bold,
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left:30.0),
+                      child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Register()));
+                      },
+                   child: const Text(
+                    'Sign up',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                            fontWeight: FontWeight.bold,
                             fontSize: 20,
-                            fontFamily: 'Righteous', color: Color.fromARGB(255, 0, 38, 141)),
-                            ),
-                            ),
-                    MaterialButton(
+                            fontFamily: 'Righteous',
+                            color: Color.fromARGB(255, 0, 38, 141)),
+                      ),
+                  )),
+                   Padding(
+                    padding: const EdgeInsets.only(right:30.0),
+                      child: MaterialButton(
                       onPressed: () {
                         showToast();
                       },
-                      padding: const EdgeInsets.only(left: 177),
-                      child: const Text("Forget password",style: TextStyle(fontWeight: FontWeight.normal,
+                  child: const Text(
+                    'Forget Password',
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                            fontWeight: FontWeight.normal,
                             fontSize: 15,
-                            fontFamily: 'Righteous'),),
-                    ),
+                            fontFamily: 'Righteous'),
+                      ),
                     
-                  ],
-                ),
+                  )),
+                ],
               ),
+              
               Padding(
                 padding: EdgeInsets.all(10.0),
                 child: SizedBox(
@@ -113,7 +128,6 @@ class _LoginState extends State<Login> {
       ),
       // ]
       // ),
-      
     );
   }
 }

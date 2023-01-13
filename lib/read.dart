@@ -90,19 +90,42 @@ class _ReadState extends State<Read> {
                         if (snapshot.hasData) {
                           for (var item in snapshot.data!) {
                             Widget child = GestureDetector(
-                              child: Container(
-                                child: ListTile(
-                                  leading: CircleAvatar(
-                                      radius: 30.0,
-                                      backgroundImage: NetworkImage(item.img)),
-                                  title: Text(item.title),
-                                  subtitle: Text(item.desc),
-                                  trailing: Text(
-                                      item.tglAwal + " - " + item.tglAkhir),
+                              child: Card(
+                                margin: EdgeInsets.all(10.0),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0)),
+                                elevation: 5.0,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                        colors: [Colors.grey, Colors.white]),
+                                  ),
+                                  child: ListTile(
+                                    leading: Container(
+                                        width: 60.0,
+                                        height: 60.0,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          border: Border.all(
+                                              color: Colors.blue, width: 2.0),
+                                        ),
+                                        child: Image.network(
+                                          item.img,
+                                          fit: BoxFit.cover,
+                                        )),
+                                    title: Text(item.title),
+                                    subtitle: Text(item.desc),
+                                    trailing: Text(
+                                        item.tglAwal + "- \n" + item.tglAkhir),
+                                  ),
+                                  padding: const EdgeInsets.only(
+                                      top: 3, left: 2, right: 2, bottom: 3),
+                                  margin: const EdgeInsets.only(bottom: 0),
                                 ),
-                                padding: const EdgeInsets.only(
-                                    top: 3, left: 2, right: 2, bottom: 3),
-                                margin: const EdgeInsets.only(bottom: 5),
                               ),
                               onTap: () async {
                                 Navigator.pushNamed(context, '/detail',

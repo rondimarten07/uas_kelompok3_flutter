@@ -38,8 +38,8 @@ class _LoginState extends State<Login> {
               Padding(
                 padding: EdgeInsets.only(bottom: 30.0),
                 child: Image.asset(
-                  'images/LogoSTTB.png',
-                  width: 200,
+                  'images/ImgLoginAtas.png',
+                  fit: BoxFit.cover,
                 ),
               ),
               Padding(
@@ -67,48 +67,45 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(left:30.0),
+                      padding: const EdgeInsets.only(left: 30.0),
                       child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Register()));
-                      },
-                   child: const Text(
-                    'Sign up',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            fontFamily: 'Righteous',
-                            color: Color.fromARGB(255, 0, 38, 141)),
-                      ),
-                  )),
-                   Padding(
-                    padding: const EdgeInsets.only(right:30.0),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Register()));
+                        },
+                        child: const Text(
+                          'Sign up',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              fontFamily: 'Righteous',
+                              color: Color.fromARGB(255, 0, 38, 141)),
+                        ),
+                      )),
+                  Padding(
+                      padding: const EdgeInsets.only(right: 30.0),
                       child: MaterialButton(
-                      onPressed: () {
-                        showToast();
-                      },
-                  child: const Text(
-                    'Forget Password',
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15,
-                            fontFamily: 'Righteous'),
-                      ),
-                    
-                  )),
+                        onPressed: () {
+                          showToast();
+                        },
+                        child: const Text(
+                          'Forget Password',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 15,
+                              fontFamily: 'Righteous'),
+                        ),
+                      )),
                 ],
               ),
-              
               Padding(
                 padding: EdgeInsets.all(10.0),
                 child: SizedBox(

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:uas_kelompok3/read.dart';
 
 class CalenderMenu extends StatelessWidget {
   const CalenderMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('CALENDER'),
-      )
+    return const Scaffold(
+      body: Read(),
     );
   }
 }

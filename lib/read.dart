@@ -33,7 +33,7 @@ class _ReadState extends State<Read> {
       child: MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-            title: const Text("Cloud"),
+            title: const Text("Calender"),
             automaticallyImplyLeading: false, //disable back from appbar android
             actions: [
               IconButton(

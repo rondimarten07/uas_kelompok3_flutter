@@ -5,21 +5,31 @@ import 'package:uas_kelompok3/menu/home_menu.dart';
 import 'package:uas_kelompok3/menu/profile_menu.dart';
 import 'package:uas_kelompok3/read.dart';
 
-class Menu extends StatefulWidget {
+class Menu extends StatelessWidget {
   const Menu({super.key});
 
   @override
-  State<Menu> createState() => _MenuState();
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: MyMenu(),
+    );
+  }
 }
 
-class _MenuState extends State<Menu> {
+class MyMenu extends StatefulWidget {
+  const MyMenu({super.key});
+
+  @override
+  State<MyMenu> createState() => _MyMenuState();
+}
+
+class _MyMenuState extends State<MyMenu> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomeMenu(),
-    Read(),
-    ProfileMenu(),
+    CalenderMenu(),
     AboutMenu(),
   ];
 
@@ -29,6 +39,7 @@ class _MenuState extends State<Menu> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -43,10 +54,6 @@ class _MenuState extends State<Menu> {
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_month),
             label: 'Calender',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.info),

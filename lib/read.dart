@@ -32,18 +32,6 @@ class _ReadState extends State<Read> {
       onWillPop: () async => false, //disable back from back on home android
       child: MaterialApp(
         home: Scaffold(
-          appBar: AppBar(
-            title: const Text("Calender"),
-            automaticallyImplyLeading: false, //disable back from appbar android
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.logout),
-                onPressed: () {
-                  logout(context);
-                },
-              ),
-            ],
-          ),
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           floatingActionButton: FloatingActionButton(
             onPressed: () {
@@ -96,11 +84,11 @@ class _ReadState extends State<Read> {
                                     borderRadius: BorderRadius.circular(20.0)),
                                 elevation: 5.0,
                                 child: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     gradient: LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
-                                        colors: [Colors.grey, Colors.white]),
+                                        colors: [Colors.blue, Colors.white54]),
                                   ),
                                   child: ListTile(
                                     leading: Container(

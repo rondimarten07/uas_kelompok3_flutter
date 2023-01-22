@@ -40,6 +40,9 @@ class _AboutMenuState extends State<AboutMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("About"),
+      ),
       body: Container(
         color: const Color.fromARGB(255, 0, 38, 141),
         padding: const EdgeInsets.all(20.0),

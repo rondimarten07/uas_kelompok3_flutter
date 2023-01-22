@@ -114,141 +114,188 @@ class _EditState extends State<Edit> {
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),
-          body: Column(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Center(
-                  child: TextField(
-                    controller: ctl_judul,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Judul',
-                      hintText: "Isi data judul",
+          body: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Center(
+                    child: TextField(
+                      controller: ctl_judul,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Judul',
+                        hintText: "Isi data judul",
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                        child: MaterialButton(
-                            onPressed: () {
-                              takePicture(ImageSource.gallery, setState);
-                            },
-                            child: Text("Gallery"),
-                            color: Colors.yellow)),
-                    Expanded(
-                        child: MaterialButton(
-                      onPressed: () {
-                        takePicture(ImageSource.camera, setState);
-                      },
-                      child: Text("Camera"),
-                      color: Colors.deepPurple,
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Center(
+                        child: Container(
+                          width: 200,
+                          height: 200,
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(width: 2, color: Colors.black)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(36.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 2, color: Colors.black)),
+                              child: Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: IconButton(
+                                      icon: Icon(
+                                        Icons.camera_alt_outlined,
+                                        size: 30,
+                                      ),
+                                      onPressed: () {
+                                        alertAdd();
+                                      })),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Center(
+                    child: Text(gambar.toString().split('/').last),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Center(
+                    child: TextField(
+                      controller: ctl_deskrpsi,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Deksirpsi',
+                        hintText: "Isi data deskripsi",
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: TextField(
+                          controller: ctl_tgl,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Isi tgl awal',
+                            hintText: "yyyy-dd-mm",
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 8.0),
+                        child: SizedBox(
+                          height: 50,
+                          child: Expanded(
+                              child: MaterialButton(
+                            onPressed: () => getDate(context),
+                            child: Text("Choose"),
+                            color: Colors.deepPurple,
+                            textColor: Colors.white,
+                          )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: TextField(
+                          controller: ctl_tglAkhir,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Isi tgl akhir',
+                            hintText: "yyyy-dd-mm",
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 8.0),
+                        child: SizedBox(
+                          height: 50,
+                          child: Expanded(
+                              child: MaterialButton(
+                            onPressed: () => getDate2(context),
+                            child: Text("Choose"),
+                            color: Colors.deepPurple,
+                            textColor: Colors.white,
+                          )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: MaterialButton(
+                      color: Colors.green,
                       textColor: Colors.white,
-                    )),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Center(
-                  child: Text(gambar.toString().split('/').last),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Center(
-                  child: TextField(
-                    controller: ctl_deskrpsi,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Deksirpsi',
-                      hintText: "Isi data deskripsi",
+                      onPressed: () {
+                        editData(
+                            context,
+                            detailEdit.id,
+                            ctl_judul.text,
+                            ctl_deskrpsi.text,
+                            file,
+                            ctl_tgl.text,
+                            ctl_tglAkhir.text);
+                      },
+                      child: Text("Simpan"),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: TextField(
-                        controller: ctl_tgl,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Isi tgl awal',
-                          hintText: "yyyy-dd-mm",
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 50,
-                      child: Expanded(
-                          child: MaterialButton(
-                        onPressed: () => getDate(context),
-                        child: Text("Choose"),
-                        color: Colors.deepPurple,
-                        textColor: Colors.white,
-                      )),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: TextField(
-                        controller: ctl_tglAkhir,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Isi tgl akhir',
-                          hintText: "yyyy-dd-mm",
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 50,
-                      child: Expanded(
-                          child: MaterialButton(
-                        onPressed: () => getDate2(context),
-                        child: Text("Choose"),
-                        color: Colors.deepPurple,
-                        textColor: Colors.white,
-                      )),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: MaterialButton(
-                    color: Colors.green,
-                    textColor: Colors.white,
-                    onPressed: () {
-                      editData(
-                          context,
-                          detailEdit.id,
-                          ctl_judul.text,
-                          ctl_deskrpsi.text,
-                          file,
-                          ctl_tgl.text,
-                          ctl_tglAkhir.text);
-                    },
-                    child: Text("Simpan"),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           )),
     );
+  }
+
+  void alertAdd() {
+    Widget buttonKamera = MaterialButton(
+        onPressed: () {
+          Navigator.pop(context);
+          takePicture(ImageSource.camera, setState);
+        },
+        child: const Text('Kamera'));
+    Widget buttonGaleri = MaterialButton(
+        onPressed: () {
+          Navigator.pop(context);
+          takePicture(ImageSource.gallery, setState);
+        },
+        child: const Text('Galeri'));
+
+    AlertDialog pilihgambar = AlertDialog(
+      title: Text("Pilih Foto"),
+      content: Text("Silahkan pilih foto anda !"),
+      actions: [buttonGaleri, buttonKamera],
+    );
+
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return pilihgambar;
+        });
   }
 }

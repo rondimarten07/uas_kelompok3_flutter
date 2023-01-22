@@ -31,7 +31,6 @@ deleteImage(context, idData) async {
     "id": idData.toString(),
   });
 
-
   final response =
       await Dio().post("https://tifrp20a.my.id/6/delete.php", data: sendData);
 

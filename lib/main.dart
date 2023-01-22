@@ -3,6 +3,7 @@ import 'package:uas_kelompok3/add.dart';
 import 'package:uas_kelompok3/detail.dart';
 import 'package:uas_kelompok3/edit.dart';
 import 'package:uas_kelompok3/login.dart';
+import 'package:uas_kelompok3/menu/about_menu.dart';
 import 'package:uas_kelompok3/menu_bm.dart';
 import 'package:uas_kelompok3/read.dart';
 import 'package:uas_kelompok3/splashscreen.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/menu': (context) => Menu(),
         '/detail': (context) => Detail(),
         '/edit': (context) => Edit(),
+        '/about': (context) => AboutMenu(),
       },
     );
   }

@@ -3,6 +3,7 @@ import 'package:uas_kelompok3/menu/about_menu.dart';
 import 'package:uas_kelompok3/menu/calender_menu.dart';
 import 'package:uas_kelompok3/menu/home_menu.dart';
 import 'package:uas_kelompok3/menu/profile_menu.dart';
+import 'package:uas_kelompok3/profile/profile_screen.dart';
 import 'package:uas_kelompok3/read.dart';
 
 class Menu extends StatelessWidget {
@@ -30,7 +31,7 @@ class _MyMenuState extends State<MyMenu> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeMenu(),
     CalenderMenu(),
-    AboutMenu(),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -56,8 +57,8 @@ class _MyMenuState extends State<MyMenu> {
             label: 'Calender',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'About',
+            icon: Icon(Icons.account_circle_outlined),
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,

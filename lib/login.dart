@@ -28,6 +28,7 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    String usernam;
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(

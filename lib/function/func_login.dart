@@ -36,8 +36,9 @@ Future<dynamic> login(context, username, password) async {
       handle("Usernama atau password salah!");
     } else {
       log("If kedua");
-      return Navigator.of(context)
-          .pushNamedAndRemoveUntil('/menu', (Route<dynamic> route) => true);
+      return Navigator.of(context).pushNamedAndRemoveUntil(
+          '/menu', (Route<dynamic> route) => false,
+          arguments: {'username': username});
     }
   }
 }

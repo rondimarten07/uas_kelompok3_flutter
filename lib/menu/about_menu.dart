@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uas_kelompok3/function/func_logout.dart';
 import 'package:uas_kelompok3/list_menu.dart';
 
 class AboutMenu extends StatefulWidget {
@@ -40,9 +41,24 @@ class _AboutMenuState extends State<AboutMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: Container(),
+        // brightness: Brightness.dark,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout,
+             color: Color.fromARGB(255, 0, 0, 0),),
+            onPressed: () {
+              logout(context);
+            },
+          ),
+          const Padding(padding: EdgeInsets.only(right: 15.0),),
+        ],
+      ),
       body: Container(
-        color: const Color.fromARGB(255, 0, 38, 141),
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.only(left:20.0, right: 20.0, bottom: 5.0),
         width: double.infinity, height: double.infinity,
         // ignore: prefer_const_constructors
         child: Card(
@@ -50,7 +66,7 @@ class _AboutMenuState extends State<AboutMenu> {
             borderRadius: BorderRadius.circular(20.0),
           ),
           elevation: 10,
-          shadowColor: Colors.blueGrey,
+          // shadowColor: Colors.blueGrey,
           child: Column(
             children: <Widget>[
               Container(
@@ -61,8 +77,8 @@ class _AboutMenuState extends State<AboutMenu> {
                     'About Us',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 40,
-                        fontFamily: 'ChakraPetch'),
+                        fontSize: 20,
+                        fontFamily: 'Righteous'),
                   ),
                 ),
               ),
@@ -73,19 +89,19 @@ class _AboutMenuState extends State<AboutMenu> {
                   alignment: Alignment.centerLeft,
                   child: Text.rich(
                     TextSpan(
-                        text: 'Majalengka punya berita ',
+                        text: 'Aplikasi Akademik ',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            fontFamily: 'ChakraPetch'),
+                            fontSize: 14,
+                            fontFamily: 'Roboto'),
                         children: <InlineSpan>[
                           TextSpan(
                             text:
                                 'merupakan aplikasi dengan tujuan utamanya dibuat untuk memenuhi tugas Ulangan Tengah Semester mata kuliah Pemograman Mobile II.',
                             style: TextStyle(
                                 fontWeight: FontWeight.normal,
-                                fontSize: 15,
-                                fontFamily: 'ChakraPetch'),
+                                fontSize: 14,
+                                fontFamily: 'Roboto'),
                           )
                         ]),
                     textAlign: TextAlign.left,
@@ -101,11 +117,11 @@ class _AboutMenuState extends State<AboutMenu> {
                 child: const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Aplikasi ini sebenarnya ingin dibuat untuk menampilkan seputar berita-berita yang ada di Majalengka, dengan beberapa menu yaitu:',
+                    'Aplikasi ini sebenarnya ingin dibuat untuk membuat dan menampilkan agenda-agenda yang dibuat oleh akademik dengan beberapa menu yaitu:',
                     style: TextStyle(
                         fontWeight: FontWeight.normal,
-                        fontSize: 15,
-                        fontFamily: 'ChakraPetch'),
+                        fontSize: 14,
+                        fontFamily: 'Roboto'),
                   ),
                 ),
               ),
@@ -119,16 +135,16 @@ class _AboutMenuState extends State<AboutMenu> {
                         text: 'Pertama Home. ',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            fontFamily: 'ChakraPetch'),
+                            fontSize: 14,
+                            fontFamily: 'Roboto'),
                         children: <InlineSpan>[
                           TextSpan(
                             text:
                                 'Menampilkan berita secara keseluruhan yang ada di Majalengka.',
                             style: TextStyle(
                                 fontWeight: FontWeight.normal,
-                                fontSize: 15,
-                                fontFamily: 'ChakraPetch'),
+                                fontSize: 14,
+                                fontFamily: 'Roboto'),
                           )
                         ]),
                     textAlign: TextAlign.left,
@@ -141,19 +157,19 @@ class _AboutMenuState extends State<AboutMenu> {
                   alignment: Alignment.centerLeft,
                   child: Text.rich(
                     TextSpan(
-                        text: 'Kedua Trending. ',
+                        text: 'Kedua Calender. ',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            fontFamily: 'ChakraPetch'),
+                            fontSize: 14,
+                            fontFamily: 'Roboto'),
                         children: <InlineSpan>[
                           TextSpan(
                             text:
                                 'Menampilkan berita yang sedah trending di Majalengka.',
                             style: TextStyle(
                                 fontWeight: FontWeight.normal,
-                                fontSize: 15,
-                                fontFamily: 'ChakraPetch'),
+                                fontSize: 14,
+                                fontFamily: 'Roboto'),
                           )
                         ]),
                     textAlign: TextAlign.left,
@@ -166,19 +182,19 @@ class _AboutMenuState extends State<AboutMenu> {
                   alignment: Alignment.centerLeft,
                   child: Text.rich(
                     TextSpan(
-                        text: 'Ketiga kategori. ',
+                        text: 'Ketiga About. ',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            fontFamily: 'ChakraPetch'),
+                            fontSize: 14,
+                            fontFamily: 'Roboto'),
                         children: <InlineSpan>[
                           TextSpan(
                             text:
-                                'Menampilkan beberapa pilihan berita yang diinginkan.',
+                                'Menampilkan informasi aplikasi dan copyright.',
                             style: TextStyle(
                                 fontWeight: FontWeight.normal,
-                                fontSize: 15,
-                                fontFamily: 'ChakraPetch'),
+                                fontSize: 14,
+                                fontFamily: 'Roboto'),
                           )
                         ]),
                     textAlign: TextAlign.left,
@@ -186,76 +202,40 @@ class _AboutMenuState extends State<AboutMenu> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 25.0, right: 15.0),
+                margin: const EdgeInsets.only(top: 5.0),
                 child: const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text.rich(
-                    TextSpan(
-                        text: 'Keempat About. ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            fontFamily: 'ChakraPetch'),
-                        children: <InlineSpan>[
-                          TextSpan(
-                            text: 'Menampilkan informasi aplikasi.',
-                            style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                fontSize: 15,
-                                fontFamily: 'ChakraPetch'),
-                          )
-                        ]),
-                    textAlign: TextAlign.left,
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Copyright',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        fontFamily: 'Righteous'),
                   ),
                 ),
               ),
-
-              //           ListView.builder(
-              //   itemCount: data.length,
-              //   itemBuilder: (BuildContext context, int index) {
-              //     return Container(
-              //       margin: const EdgeInsets.only(left: 5.0),
-              //       padding: const EdgeInsets.only(left: 5.0),
-              //       child: ClipRRect(
-              //         borderRadius: BorderRadius.circular(5),
-              //         child: ListTile(
-              //           leading: Image.network(data[index].img),
-              //           title: Text(data[index].nama,
-              //               style: const TextStyle(
-              //                   fontWeight: FontWeight.bold,
-              //                   fontSize: 12,
-              //                   fontFamily: 'Arial')),
-              //           subtitle: Text(data[index].npm + "\n" + data[index].kelas,
-              //               style: const TextStyle(
-              //                   fontWeight: FontWeight.bold,
-              //                   fontSize: 12,
-              //                   fontFamily: 'Arial')),
-              //         ),
-              //       ),
-              //     );
-              //   },
-              // ),
-
+    
               Column(
                   children: data.map((data) {
                 return Container(
                   margin: const EdgeInsets.only(left: 5.0),
                   padding: const EdgeInsets.only(left: 5.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child: ListTile(
-                      leading: Image.asset((data.img)),
-                      title: Text(data.nama,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                              fontFamily: 'Righteous')),
-                      subtitle: Text(data.npm + "\n" + data.kelas,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                              fontFamily: 'Righteous')),
+                  child: ListTile(
+                    leading: ClipRRect(
+                      borderRadius: BorderRadius.circular(5.0),
+                      child: Image.asset((data.img),
+                     ),
                     ),
+                    title: Text(data.nama,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                            fontFamily: 'Roboto')),
+                    subtitle: Text("${data.npm}\n${data.kelas}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12.0,
+                            fontFamily: 'Roboto')),
                   ),
                 );
               }).toList()),

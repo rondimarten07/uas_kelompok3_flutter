@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 logout(BuildContext context){
 Widget buttonCancel= TextButton(
         onPressed: () => Navigator.of(context).pop(),
-        child: const Text('Cancel'));
+        child: const Text('No'));
       Widget buttonOK= TextButton(
         onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false),
-        child: const Text('OK'));
+        child: const Text('Yes'));
 
       AlertDialog logoutQuestion = AlertDialog(
       title: Text("Logout"),
-      content: Text("Keluar dari aplikasi Cloud?"),
+      content: Text("Apakah anda yakin ingin keluar dari Aplikasi Akademik?"),
       actions: [
         buttonOK,
         buttonCancel

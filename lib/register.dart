@@ -84,8 +84,8 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(10.0),
+               Padding(
+                padding: const EdgeInsets.all(10.0),
                 child: SizedBox(
                   width: double.infinity,
                   height: 50,
@@ -93,7 +93,13 @@ class _RegisterState extends State<Register> {
                     onPressed: () {
                       addData(context, ctl_user.text, ctl_pwd.text, ctl_nm.text);
                     },
-                    child: Text("Register"),
+                    style:
+                    ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(40, 167, 69, 1),),
+                    child: const Text("Register",
+                    style: TextStyle(
+                              fontSize: 25.0,
+                              fontFamily: 'Righteous')),
                   ),
                 ),
               ),

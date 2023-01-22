@@ -22,6 +22,6 @@ addData(context, username, password, name) async {
         .post("https://tifrp20a.my.id/6/register.php", data: sendData);
     log("test send data :" + username.toString());
     return Navigator.of(context)
-        .pushNamedAndRemoveUntil('/read', (Route<dynamic> route) => false);
+        .pushNamedAndRemoveUntil('/login', (Route<dynamic> route) => false);
   }
 }

@@ -29,20 +29,20 @@ class _ReadState extends State<Read> {
     TextEditingController searchingController = TextEditingController();
 
     return WillPopScope(
-      onWillPop: () async => false, //disable back from back on home android
+      onWillPop: () async => false, 
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
-            title: const Text("Calender"),
             automaticallyImplyLeading: false, //disable back from appbar android
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.logout),
-                onPressed: () {
-                  logout(context);
-                },
-              ),
-            ],
+            // actions: [
+            //   IconButton(
+            //     icon: const Icon(Icons.logout),
+            //     onPressed: () {
+            //       logout(context);
+            //     },
+            //   ),
+            // ],
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           floatingActionButton: FloatingActionButton(

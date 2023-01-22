@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:uas_kelompok3/menu/about_menu.dart';
 import 'package:uas_kelompok3/menu/calender_menu.dart';
 import 'package:uas_kelompok3/menu/home_menu.dart';
-import 'package:uas_kelompok3/menu/profile_menu.dart';
 import 'package:uas_kelompok3/read.dart';
 
 class Menu extends StatelessWidget {
@@ -61,7 +60,7 @@ class _MyMenuState extends State<MyMenu> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: const Color.fromRGBO(16, 147, 62, 1),
+        selectedItemColor: const Color.fromRGBO(33, 150, 243, 1),
         onTap: _onItemTapped,
       ),
     );

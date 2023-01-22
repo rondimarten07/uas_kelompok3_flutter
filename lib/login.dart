@@ -36,14 +36,15 @@ class _LoginState extends State<Login> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(bottom: 30.0),
+                padding: const EdgeInsets.only(bottom: 30.0),
                 child: Image.asset(
                   'images/ImgLoginAtas.png',
+                  width: double.infinity,
                   fit: BoxFit.cover,
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: TextField(
                   controller: ctl_user,
                   decoration: const InputDecoration(
@@ -55,7 +56,8 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(10.0),
+                padding:
+                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
                 child: TextField(
                   controller: ctl_pwd,
                   obscureText: true,
@@ -71,7 +73,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
+                      padding: const EdgeInsets.only(left: 5.0),
                       child: TextButton(
                         onPressed: () {
                           Navigator.push(
@@ -83,39 +85,71 @@ class _LoginState extends State<Login> {
                           'Sign up',
                           textAlign: TextAlign.left,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              fontFamily: 'Righteous',
-                              color: Color.fromARGB(255, 0, 38, 141)),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            fontFamily: 'Roboto',
+                            color: Colors.blue,
+                          ),
                         ),
                       )),
-                  Padding(
-                      padding: const EdgeInsets.only(right: 30.0),
-                      child: MaterialButton(
-                        onPressed: () {
-                          showToast();
-                        },
-                        child: const Text(
-                          'Forget Password',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 15,
-                              fontFamily: 'Righteous'),
-                        ),
-                      )),
+                  Container(
+                    // margin: EdgeInsets.only(right: 0.0),
+                    child: MaterialButton(
+                      onPressed: () {
+                        showToast();
+                      },
+                      child: const Text(
+                        'Forget Password',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15.0,
+                            fontFamily: 'Roboto'
+                            ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               Padding(
-                padding: EdgeInsets.all(10.0),
-                child: SizedBox(
+                padding:
+                    const EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0),
+                child: Container(
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
                       login(context, ctl_user.text, ctl_pwd.text);
                     },
-                    child: Text("Login"),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromRGBO(40, 167, 69, 1),
+                    ),
+                    child: const Text("Login",
+                        style:
+                            TextStyle(fontSize: 25.0, fontFamily: 'Righteous')),
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(top:10.0, left: 10.0, right: 10.0),
+                child: Text(
+                  'Dengan mengeklik tombol Login, Anda menyetujui Syarat dan Ketentuan Aplikasi Akademik, Kebijakan Privasi dan Kebijakan Cookie',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontFamily: 'Roboto',),
+                ),
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(top: 62.0),
+                child: 
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Image.asset(
+                    'images/ImgLoginBawah.png',
+                    width: double.infinity,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),

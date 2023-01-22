@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
       textStyle: TextStyle(
         fontSize: 40.0,
         fontWeight: FontWeight.bold,
-         fontFamily: 'Righteous'
+         fontFamily: 'StretchPro'
       ),
       colors: const [
         Color.fromRGBO(40, 167, 69, 1),
@@ -38,24 +38,6 @@ class _SplashScreenState extends State<SplashScreen> {
         Color.fromRGBO(156, 39, 176, 1),
         Color.fromRGBO(255, 235, 59, 1),
         Color.fromRGBO(244, 67, 54, 1),
-        //  Color.fromRGBO(31, 146, 236, 1),
-        // Color.fromRGBO(40, 167, 69, 1),
-        // Color.fromRGBO(37, 161, 116, 1),
-        // Color.fromRGBO(128, 128, 128, 1),
-        // Color.fromRGBO(35, 156, 153, 1),
-        // Color.fromRGBO(31, 146, 236, 1),
-        // Color.fromRGBO(40, 167, 69, 1),
-        // Color.fromRGBO(31, 146, 236, 1),
-        // Color.fromRGBO(40, 167, 69, 1),
-        // Color.fromRGBO(31, 146, 236, 1),
-        // Color.fromRGBO(40, 167, 69, 1),
-        // Color.fromRGBO(31, 146, 236, 1),
-        //  Colors.purple,
-        // Colors.blue,
-        // Colors.yellow,
-        // Colors.red,
-        
-        
       ],
       backgroundColor: Colors.white,
     );

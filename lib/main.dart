@@ -14,19 +14,23 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: '/',
-      routes: {
-        '/': (context) => SplashScreen(),
-        '/login': (context) => Login(),
-        '/add': (context) => AddData(),
-        '/read': (context) => Read(),
-        '/menu': (context) => Menu(),
-        '/detail': (context) => Detail(),
-        '/edit': (context) => Edit(),
-      },
-    );
-  }
+ @override
+Widget build(BuildContext context) {
+return MaterialApp(
+debugShowCheckedModeBanner: false,
+theme: ThemeData(
+primarySwatch: Colors.blue,
+),
+initialRoute: '/',
+routes: {
+'/': (context) => SplashScreen(),
+'/login': (context) => Login(),
+'/add': (context) => AddData(),
+'/read': (context) => Read(),
+'/menu': (context) => Menu(),
+'/detail': (context) => Detail(),
+'/edit': (context) => Edit(),
+},
+);
+}
 }

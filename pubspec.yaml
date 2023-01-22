@@ -36,6 +36,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  sqflite: ^2.2.3
 
 dev_dependencies:
   flutter_datetime_picker: ^1.5.1
@@ -66,10 +67,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/LogoSTTB.png
-    - images/login_background.jpg
-    - images/jamjam.png
-    - images/ImgLoginAtas.png
+    - images/
+    # - images/login_background.jpg
+    # - images/jamjam.png
+    # - images/ImgLoginAtas.png
+    # - images/ImgLoginBawah.png
+    # - images/MaskotSTTB.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -86,6 +89,26 @@ flutter:
     - family: Righteous
       fonts:
         - asset: fonts/Righteous.ttf
+
+    - family: Grey
+      fonts:
+        - asset: fonts/Grey.ttf
+
+    - family: GameOfSquids
+      fonts:
+        - asset: fonts/GameOfSquids.ttf
+
+    - family: StretchPro
+      fonts:
+        - asset: fonts/StretchPro.ttf
+
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto.ttf
+
+    - family: NunitoSans
+      fonts:
+        - asset: fonts/NunitoSans.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
